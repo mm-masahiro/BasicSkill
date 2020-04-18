@@ -40,14 +40,30 @@ if (AGE <= 15 && Member) {
 
 //Fiz Buzz
 
-for (let i = 1; i <= 30; i++) {
-    if (i % 3 === 0 && i % 5 === 0) {
-        console.log('FizzBuzz');
-    } else if (i % 3 === 0) {
-        console.log('Fizz');
-    } else if (i % 5 === 0) {
-        console.log('Buzz');
-    } else {
-        console.log(i);
+// for (let i = 1; i <= 30; i++) {
+//     if (i % 3 === 0 && i % 5 === 0) {
+//         console.log('FizzBuzz'); 
+//     } else if (i % 3 === 0) {
+//         console.log('Fizz');
+//     } else if (i % 5 === 0) {
+//         console.log('Buzz');
+//     } else {
+//         console.log(i);
+//     };
+// };
+
+const classes = ['A','B','C','D'];
+
+for(let grade = 1; grade <= 3; grade++) {
+    for (var i = 0; i < classes.length; i++) {
+        console.log(grade + '-' + classes[i]);
+    };
+};
+
+const p = ['あ','い','う','え','お','か','き','く','け','こ'];
+
+for (let x = 0; x < p.length; x++) {
+    for (let y = 0; y < p.length; y++) {
+        console.log(p[x] + p[y]);
     };
 };
