@@ -67,3 +67,21 @@ for (let x = 0; x < p.length; x++) {
         console.log(p[x] + p[y]);
     };
 };
+
+//生まれてから何秒経過したか
+const myBirthTime = new Date(1997, 2, 10, 10,30);
+
+function updateParagrah() {
+    const now = new Date();
+    const seconds = (now.getTime() - myBirthTime.getTime()) / 1000;
+    console.log('生まれてから' + seconds + '秒通過');
+}
+
+// setInterval(updateParagrah, 1000);
+
+function area(a) {
+    let Area = a * a * 3.14;
+    return Area;
+}
+
+console.log(area(10));
