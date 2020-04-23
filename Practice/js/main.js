@@ -1,5 +1,34 @@
 'use strict'
 
+const userNameInput = document.getElementById('user-name');
+const assessmentButton = document.getElementById('assessment');
+const resultDivided = document.getElementById('result-area');
+const tweetDivided = document.getElementById('tweet-area');
+
+function removeAllChildren(element) {
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
+}
+
+assessmentButton.onclick = function() {
+    const userName = userNameInput.value;
+    if(userName.length === 0) {
+        return;
+    }
+
+    removeAllChildren(resultDivided);
+    const header = document.createElement('h3');
+    header.innerText = '診断結果';
+    resultDivided.appendChild(header);
+    
+    const paragraph = document.createElement('p');
+    const result = assessment(userName);
+    paragraph.innerText = result;
+    resultDivided.appendChild(paragraph);
+};
+
+
 const answers = [
     '{userName}のいいところは声です。{userName}の特徴的な声は皆を惹きつけ、心に残ります。',
     '{userName}のいいところはまなざしです。{userName}に見つめられた人は、気になって仕方がないでしょう。',
@@ -24,10 +53,10 @@ function assessment(userName) {
     for(let i = 0; i < userName.length; i++) {
         sumOfCharCode = sumOfCharCode + userName.charCodeAt(i);
     }
-
+    
     const index = sumOfCharCode % answers.length;
     let result = answers[index];
-
+    
     result = result.replace(/\{userName\}/g, userName);
     return result;
 }
@@ -36,4 +65,4 @@ console.assert(
     assessment('太郎') ===
     '太郎のいいところは決断力です。太郎がする決断にいつも助けられる人がいます。',
     '診断結果の文言の特定の部分を名前に置き換える処理が正しくありません。'
-)
+    )
