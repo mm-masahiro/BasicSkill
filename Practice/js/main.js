@@ -26,8 +26,28 @@ assessmentButton.onclick = function() {
     const result = assessment(userName);
     paragraph.innerText = result;
     resultDivided.appendChild(paragraph);
+
+    removeAllChildren(tweetDivided);
+    const anchor = document.createElement('a');
+    const hrefValue ='https://twitter.com/intent/tweet?button_hashtag=あなたのいいとろ&ref_src=twsrc%5Etfw';
+    
+    anchor.setAttribute('href', hrefValue);
+    anchor.className = 'twitter-hashtag-button'
+    anchor.setAttribute('data-text', result);
+    anchor.innerText = 'Tweet #あなたのいいとろ';
+    
+    tweetDivided.appendChild(anchor);
+
+    const script = document.createElement('script');
+    script.setAttribute('src', 'https://platform.twitter.com/widgets.js');
+    tweetDivided.appendChild(script);
 };
 
+userNameInput.onkeydown = event => {
+    if(event.key === 'Enter') {
+        assessmentButton.onclick();
+    }
+};
 
 const answers = [
     '{userName}のいいところは声です。{userName}の特徴的な声は皆を惹きつけ、心に残ります。',
@@ -65,4 +85,4 @@ console.assert(
     assessment('太郎') ===
     '太郎のいいところは決断力です。太郎がする決断にいつも助けられる人がいます。',
     '診断結果の文言の特定の部分を名前に置き換える処理が正しくありません。'
-    )
+)
